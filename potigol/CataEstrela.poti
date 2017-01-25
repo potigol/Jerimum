@@ -1,0 +1,53 @@
+use "jerimum"
+
+# Tipos
+tipo Jogador
+  var x, y: Real
+  imagem : Imagem
+  
+  desenhe()
+    imagem.desenhe(x, y, 3)
+  fim
+  
+  atualize()
+    se Teclado.TECLA_PARA_CIMA então y = y - 5 fim
+    se Teclado.TECLA_PARA_BAIXO então y = y + 5 fim  
+  fim
+fim
+
+tipo Estrela
+  x, y: Real
+  imagens : Lista[Imagem]
+  desenhe()
+    i = aleatório(1, imagens.tamanho)
+    imagens[i].desenhe(x, y, 1)
+  fim
+fim
+
+imagem_fundo = Imagem("/textures/Space.png")
+
+jogador = Jogador(40, 40, Imagem("/textures/Nave.bmp"))
+
+var estrelas = Lista[Estrela]()
+para i de 1 até 10 faça
+  estrelas = Estrela(aleatorio(620), aleatorio(460),  Imagem.fatie("/textures/sheet.png", 32, 32)) :: estrelas
+fim
+
+atualize()
+  jogador.atualize
+  para a em estrelas faça
+    a.atualize
+  fim
+fim
+
+desenhe()
+  imagem_fundo.desenhe(0, 0, 0)
+  jogador.desenhe()
+  para a em estrelas faça
+    a.desenhe
+  fim
+fim
+
+jogo = Jogo("Cata Estrelas", 640, 480, atualize, desenhe)
+jogo.iniciar
+
