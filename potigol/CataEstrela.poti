@@ -2,52 +2,126 @@ use "jerimum"
 
 # Tipos
 tipo Jogador
-  var x, y: Real
-  imagem : Imagem
+  x, y: Real
+  imagem = Imagem("Nave.bmp")
+  var placar = 0
+  var vel_x, vel_y = 0.0
+  var angulo = 0.0
   
   desenhe()
-    imagem.desenhe(x, y, 3)
+    imagem.desenhe(x, y, 3, angulo)
   fim
-  
-  atualize()
-    se Teclado.TECLA_PARA_CIMA então y = y - 5 fim
-    se Teclado.TECLA_PARA_BAIXO então y = y + 5 fim  
+
+  girar_direita()
+    angulo := angulo + 5.0
+  fim
+
+  girar_esquerda()
+    angulo := angulo - 5.0
+  fim
+
+  acelerar()
+    vel_x := vel_x + Jogo.projecao_X(angulo, 0.5)
+    vel_y := vel_y + Jogo.projecao_Y(angulo, 0.5)
+  fim
+
+  mover()
+    x := x + vel_x
+    y := y + vel_y
+    x := x mod jogo.largura
+    y := y mod logo.altura
+
+    vel_x := vel_x * 0.95
+    vel_y := vel_y * 0.95
+  fim
+
+  cata_estrelas(estrelas: Lista[Estrela])
+    catado = estrelas.selecione(estrela => Jogo.distancia(x, y, estrela.x, estrela.y) >= 35)
+    n = estrelas.tamanho - catado.tamanho
+    placar := placar + n * 10
+    catado
   fim
 fim
 
 tipo Estrela
-  x, y: Real
-  imagens : Lista[Imagem]
+  x = aleatório(jogo.largura)
+  y = aleatório(jogo.altura)
+  cor = Cor(aleatório(40, 256), aleatório(40, 256), aleatório(40, 256))
+  imagens = Imagem.fatie("Estrela.png", 25, 25)
+
   desenhe()
-    i = aleatório(1, imagens.tamanho)
-    imagens[i].desenhe(x, y, 1)
+    imagem = imagens[Relogio.milisegundos div 100 mod imagens.tamanho + 1]
+    imagem.desenhe(x - imagem.largura / 2, y - imagem.altura / 2, 1, 0, color)
   fim
 fim
 
 imagem_fundo = Imagem("/textures/Space.png")
-
-jogador = Jogador(40, 40, Imagem("/textures/Nave.bmp"))
+nave = Jogador(40, 40)
+var tempo := 0.0
 
 var estrelas = Lista[Estrela]()
 para i de 1 até 10 faça
-  estrelas = Estrela(aleatorio(620), aleatorio(460),  Imagem.fatie("/textures/sheet.png", 32, 32)) :: estrelas
-fim
-
-atualize()
-  jogador.atualize
-  para a em estrelas faça
-    a.atualize
-  fim
+  estrelas = Estrela(aleatorio(620), aleatorio(460)) :: estrelas
 fim
 
 desenhe()
   imagem_fundo.desenhe(0, 0, 0)
-  jogador.desenhe()
-  para a em estrelas faça
-    a.desenhe
+  escolha estado
+    caso "INICIO"  => desenhe_inicio
+    caso "JOGANDO" => desenhe_jogando
+    caso "FIM"     => desenhe_fim
   fim
 fim
 
+atualize()
+  escolha estado
+    caso "INICIO"  => atualize_inicio
+    caso "JOGANDO" => atualize_jogando
+    caso _         => 
+  fim
+fim
+
+# Estado: inicio do jogo
+atualize_inicio()
+  se teclado.TECLA_I então estado := "JOGANDO" fim
+fim
+
+draw_inicio()
+  msg = "PRESSIONE [I] PARA COMEÇAR"
+  fonte.desenhe_centralizado(msg, largura / 2, height / 2, 3, Cor.AMARELO)
+end
+
+# Estado: JOGANDO
+atualize_jogando()
+  # eventos
+  se Teclado.TECLA_PARA_DIREITA  então jogador.girar_direita fim
+  se Teclado.TECLA_PARA_ESQUERDA então jogador.girar_esquerda fim
+  se Teclado.TECLA_PARA_CIMA     então jogador.acelerar fim   
+  # inserir novas estrelas estrelas se necessario
+  se aleatório(100) < 4 e estrelas.tamanho < 25 então estrelas := Estrela() :: estrelas fim
+
+  estrelas := jogador.cata_estrelas(estrelas)      # catar estrelas
+  jogador.mover                                    # atualizar a posicao do jogador
+  tempo := tempo + 1.0/60.0                        # incrementar o tempo
+  se tempo.inteiro >= 30 então estado := "FIM" fim # terminar o jogo depois de 30 segundos
+fim
+
+desenhe_jogando()
+  jogador.desenhe
+  para estrela em estrelas faça
+    estrela.desenhe
+  fim
+  fonte.desenhe("Placar: {jogador.placar}", 10, 10, 3, Cor.AMARELO)
+  fonte.desenhe("Tempo: {tempo.inteiro}s",  10, 30, 3, Cor.AMARELO)
+fim
+
+# Estado: fim do jogo
+draw_fim()
+  msg = "FIM DE JOGO, VOCE FEZ {jogador.placar} PONTOS"
+  fonte.desenhe_centralizado(msg, meio/2, altura/2, 3, Cor.AMARELO)
+fim
+
+# Jogo
 jogo = Jogo("Cata Estrelas", 640, 480, atualize, desenhe)
 jogo.iniciar
 
