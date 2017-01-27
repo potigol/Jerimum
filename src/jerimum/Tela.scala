@@ -14,8 +14,7 @@ class Tela(titulo: String, largura: Int, altura: Int) {
     setFocusable(false)
   }
   val frame = new JFrame(titulo) {
-    val img = new BufferedImage(128, 128, BufferedImage.TYPE_INT_RGB)
-    setIconImage(img)
+    setIconImage(Imagem("/potigol.png").buffer)
     setSize(dim)
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
     setResizable(false)

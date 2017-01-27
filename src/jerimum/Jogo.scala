@@ -1,10 +1,8 @@
 package jerimum
 
-import java.awt.Color.WHITE
+import java.awt.Graphics2D
 
-import scala.util.Try
-import scala.util.Success
-import scala.util.Failure
+import scala.util.{ Failure, Try }
 
 object Jogo extends Runnable {
   var titulo: String = "Sem Nome"
@@ -31,12 +29,13 @@ object Jogo extends Runnable {
     Option(display.canvas.getBufferStrategy) match {
       case None =>
         display.canvas.createBufferStrategy(3)
-      case Some(strategy) =>
-        val g = strategy.getDrawGraphics
-        g.clearRect(0, 0, largura, altura)
-        Desenho.desenhe(g)
-        strategy.show
-        g.dispose()
+      case Some(strategy) => strategy.getDrawGraphics match {
+        case g: Graphics2D =>
+          g.clearRect(0, 0, largura, altura)
+          Desenho.desenhe(g)
+          strategy.show
+          g.dispose()
+      }
     }
   }
 
@@ -92,4 +91,19 @@ object Jogo extends Runnable {
       }
     }
   }
+
+  def distância(x1: Double, y1: Double, x2: Double, y2: Double) = {
+    Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2))
+  }
+  val distancia = distância _
+
+  def projeção_X(angulo: Double, valor: Double) = {
+    Math.sin(angulo * Math.PI / 180) * valor
+
+  }
+
+  def projeção_Y(angulo: Double, valor: Double) = {
+    -Math.cos(angulo * Math.PI / 180) * valor
+  }
+
 }
