@@ -1,13 +1,13 @@
 package jerimum
 
-import java.awt.Graphics2D
+import br.edu.ifrn.potigol.Potigolutil.{ Inteiro, Real, Texto }
 
 object Fonte {
 
 }
 
 case class Fonte() {
-  def desenhe_centralizado(msg: String, x: Double, y: Double, z: Int, c: Cor) = {
+  def desenhe_centralizado(msg: Texto, x: Real, y: Real, z: Inteiro, c: Cor) = {
     Desenho.incluir(z, g => {
       g.setColor(c.color)
       val largura = g.getFontMetrics.stringWidth(msg)
@@ -17,7 +17,7 @@ case class Fonte() {
 
   }
 
-  def desenhe(msg: String, x: Double, y: Double, z: Int, c: Cor) = {
+  def desenhe(msg: Texto, x: Real, y: Real, z: Inteiro, c: Cor) = {
     Desenho.incluir(z, g => {
       g.setColor(c.color)
       g.drawString(msg, x.toInt, y.toInt)

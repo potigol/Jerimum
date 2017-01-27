@@ -1,13 +1,15 @@
 package jerimum
 
-import java.awt.{ Graphics2D, RenderingHints, Font }
+import java.awt.{ Font, Graphics2D, RenderingHints }
 
 import scala.collection.SortedMap
 
+import br.edu.ifrn.potigol.Potigolutil.Inteiro
+
 object Desenho {
-  val vazia = SortedMap[Int, List[Graphics2D => Unit]]()
-  var camadas = vazia
-  def todos = camadas.values.flatten
+  private[this] val vazia = SortedMap[Inteiro, List[Graphics2D => Unit]]()
+  private[this] var camadas = vazia
+  private[this] def todos = camadas.values.flatten
 
   private[this] val rh = new RenderingHints(
     RenderingHints.KEY_TEXT_ANTIALIASING,
@@ -15,7 +17,7 @@ object Desenho {
 
   private[this] val font = new Font("Dialog", Font.BOLD, 16);
 
-  def desenhe(g: Graphics2D) = {
+  def desenhe(g: Graphics2D): Unit = {
     g match {
       case g: Graphics2D =>
         g.setFont(font)
@@ -25,7 +27,7 @@ object Desenho {
     camadas = vazia
   }
 
-  def incluir(z: Int, funcao: Graphics2D => Unit) = {
+  def incluir(z: Inteiro, funcao: Graphics2D => Unit) = {
     camadas += z -> (funcao :: camadas.getOrElse(z, Nil))
   }
 }

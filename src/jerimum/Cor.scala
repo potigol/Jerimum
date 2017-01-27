@@ -1,8 +1,9 @@
 package jerimum
 
 import java.awt.Color
+import br.edu.ifrn.potigol.Potigolutil._
 
-case class Cor(vermelho: Int, verde: Int, azul: Int) {
+case class Cor(vermelho: Inteiro, verde: Inteiro, azul: Inteiro) {
   def color = new Color(vermelho, verde, azul)
   def this(color: Color) = this(color.getRed, color.getGreen, color.getBlue)
 }

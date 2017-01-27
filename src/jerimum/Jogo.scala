@@ -4,16 +4,18 @@ import java.awt.Graphics2D
 
 import scala.util.{ Failure, Try }
 
-object Jogo extends Runnable {
-  var titulo: String = "Sem Nome"
-  var largura = 640
-  var altura = 480
-  var fps = 60
-  var display: Tela = _
-  var running = false
-  var thread: Thread = _
+import br.edu.ifrn.potigol.Potigolutil.{ Inteiro, Real, Texto }
 
-  var desenhe, atualize = () => {}
+object Jogo extends Runnable {
+  var titulo: Texto = "Sem Nome"
+  var largura: Inteiro = 640
+  var altura: Inteiro = 480
+  var fps: Inteiro = 60
+  private[this] var display: Tela = _
+  private[this] var running = false
+  private[this] var thread: Thread = _
+
+  private[this] var desenhe, atualize = () => {}
 
   def init() = {
     display = new Tela(titulo, largura, altura) {
@@ -25,7 +27,7 @@ object Jogo extends Runnable {
     }
   }
 
-  def draw(x: Int = 0) = {
+  private[this] def draw() = {
     Option(display.canvas.getBufferStrategy) match {
       case None =>
         display.canvas.createBufferStrategy(3)
@@ -66,8 +68,9 @@ object Jogo extends Runnable {
     parar()
   }
 
-  def iniciar(titulo: String = "Potigol com Jerimum", largura: Int = 640, altura: Int = 480, atualize: => Unit = {},
-              desenhe: => Unit = {}, fps: Int = 60) = synchronized {
+  def iniciar(titulo: Texto = "Potigol com Jerimum", largura: Inteiro = 640,
+              altura: Inteiro = 480, atualize: => Unit = {},
+              desenhe: => Unit = {}, fps: Inteiro = 60) = synchronized {
     this.titulo = titulo
     this.largura = largura
     this.altura = altura
@@ -82,7 +85,7 @@ object Jogo extends Runnable {
     }
   }
 
-  def parar() = synchronized {
+  private[this] def parar() = synchronized {
     if (running) {
       running = false
       Try(thread.join()) match {
@@ -92,17 +95,17 @@ object Jogo extends Runnable {
     }
   }
 
-  def distância(x1: Double, y1: Double, x2: Double, y2: Double) = {
+  def distância(x1: Real, y1: Real, x2: Real, y2: Real): Real = {
     Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2))
   }
   val distancia = distância _
 
-  def projeção_X(angulo: Double, valor: Double) = {
+  def projeção_X(angulo: Real, valor: Real): Real = {
     Math.sin(angulo * Math.PI / 180) * valor
 
   }
 
-  def projeção_Y(angulo: Double, valor: Double) = {
+  def projeção_Y(angulo: Real, valor: Real): Real = {
     -Math.cos(angulo * Math.PI / 180) * valor
   }
 
