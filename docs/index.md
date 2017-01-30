@@ -4,6 +4,19 @@ Para usar a biblioteca Jerimum comece o programa com a instrução `use "jerimum
 
 ## Jogo ##
 
+````
+use "jerimum"
+
+atualize()
+
+fim
+
+desenhe()
+
+fim
+
+jogo.iniciar("Título", 640, 480, atualize, desenhe, 60)
+````
 
 ### Atributos ###
 <dl>
@@ -18,7 +31,6 @@ Para usar a biblioteca Jerimum comece o programa com a instrução `use "jerimum
 
 <dt><code>fps: Inteiro = 60</code></dt>
   <dd>Taxa de atualização do jogo em quadros por segundo</dd>
-
 </dl>
 
 ### Métodos ###
@@ -37,12 +49,3 @@ Para usar a biblioteca Jerimum comece o programa com a instrução `use "jerimum
   <dd>Projeção do vetor dado pelo módulo e ângulo no eixo y.</dd>
 
 </dl>
-
-titulo: Texto = "Potigol com Jerimum", largura: Inteiro = 640,
-              altura: Inteiro = 480, atualize: => Unit = {},
-              desenhe: => Unit = {}, fps: Inteiro = 60
-
-
-  def projeção_Y(angulo: Real, valor: Real): Real = {
-    -Math.cos(angulo * Math.PI / 180) * valor
-  }
