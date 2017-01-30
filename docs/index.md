@@ -51,6 +51,37 @@ jogo.iniciar("Título", 640, 480, atualize, desenhe, 60)
 
 </dl>
 
+## Imagem ##
+
+### Atributos ###
+<dl>
+<dt><code>agora: Real</code></dt>
+  <dd>Horário no momento.</dd>
+<dt><code>milisegundos: Inteiro</code></dt>
+  <dd>Quantidade de milisegundos desde o dia 1/1/2000.</dd>
+</dl>
+
+### Métodos do Tipo###
+<dl>
+<dt><code>Imagem(caminho: Texto)</code></dt>
+  <dd>Construtor</dd>
+<dt><code>desenhe(x, y: Real, z: Inteiro, angulo: Real = 0.0)</code></dt>
+  <dd>Desenha uma imagem na tela tendo (x, y) como ponto superior esquerdo.</dd>
+<dt><code>desenhe_centralizado(x, y: Real, z: Inteiro, angulo: Real = 0.0)</code></dt>
+  <dd>Desenha uma imagem na tela tendo (x, y) como ponto central.</dd>
+</dl>
+<dt><code>fatie(caminho: Texto, x: Inteiro, y: Inteiro): Lista[Imagem]</code></dt>
+  <dd>Recorta uma imagem em imagens menores formando uma lista.</dd>
+</dl>
+
+### Atributos ###
+<dl>
+<dt><code>largura: Inteiro</code></dt>
+  <dd>Largura da imagem</dd>
+<dt><code>altura: Inteiro</code></dt>
+  <dd>Altura da imagem.</dd>
+</dl>
+
 ## Teclado ##
 
 ### Atributos do Tipo###
@@ -74,5 +105,15 @@ jogo.iniciar("Título", 640, 480, atualize, desenhe, 60)
 <dt><code>x: Inteiro</code></dt>
   <dd>A posição do mouse no eixo X.</dd>
 <dt><code>y: Inteiro</code></dt>
-  <dd> posição do mouse no exio Y.</dd>
+  <dd> posição do mouse no eixo Y.</dd>
+</dl>
+
+## Relógio ##
+
+### Atributos do Tipo ###
+<dl>
+<dt><code>agora: Real</code></dt>
+  <dd>Horário no momento.</dd>
+<dt><code>milisegundos: Inteiro</code></dt>
+  <dd>Quantidade de milisegundos desde o dia 1/1/2000.</dd>
 </dl>
