@@ -2,21 +2,22 @@
 
 Para usar a biblioteca Jerimum comece o programa com a instrução `use "jerimum"`
 
-## Jogo ##
-
-````
+````python
 use "jerimum"
 
 atualize()
-
+  # Código para atualizar o jogo
 fim
 
 desenhe()
-
+  # código para desenhar o jogo
 fim
 
 jogo.iniciar("Título", 640, 480, atualize, desenhe, 60)
 ````
+
+## Jogo ##
+
 
 ### Atributos ###
 <dl>
