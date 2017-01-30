@@ -21,8 +21,28 @@ Para usar a biblioteca Jerimum comece o programa com a instrução `use "jerimum
 
 </dl>
 
-`jogo.largura: Inteiro` - largura da tela em pixels
+### Métodos ###
 
-````
-largura: Real
-````
+<dl>
+<dt><code>iniciar(titulo: Texto, largura: Inteiro = 640, altura: Inteiro = 480, atualize, desenhe, fps: Inteiro = 60)</code></dt>
+  <dd>Iniciar o jogo.</dd>
+  
+<dt><code>distância(x1, y1, x2, y2: Real): Real</code></dt>
+  <dd>Distância entre dois pontos (x1,y1) e (x2,y2).</dd>
+  
+<dt><code>projeção_X(angulo: Real, módulo: Real): Real</code></dt>
+  <dd>Projeção do vetor dado pelo módulo e ângulo no eixo x.</dd>
+
+<dt><code>projeção_Y(angulo: Real, módulo: Real): Real</code></dt>
+  <dd>Projeção do vetor dado pelo módulo e ângulo no eixo y.</dd>
+
+</dl>
+
+titulo: Texto = "Potigol com Jerimum", largura: Inteiro = 640,
+              altura: Inteiro = 480, atualize: => Unit = {},
+              desenhe: => Unit = {}, fps: Inteiro = 60
+
+
+  def projeção_Y(angulo: Real, valor: Real): Real = {
+    -Math.cos(angulo * Math.PI / 180) * valor
+  }
