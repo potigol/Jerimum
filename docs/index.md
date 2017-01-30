@@ -53,12 +53,25 @@ jogo.iniciar("Título", 640, 480, atualize, desenhe, 60)
 
 ## Teclado ##
 
-### Atributos ###
+### Atributos do Tipo###
 
 <dl>
 <dt><code>TECLA_A, TECLA_B, TECLA_C, TECLA_D, TECLA_E, TECLA_F, TECLA_G, TECLA_H, TECLA_I, TECLA_J, TECLA_K, TECLA_L, TECLA_M,
  TECLA_N, TECLA_O, TECLA_P, TECLA_Q, TECLA_R, TECLA_S, TECLA_T, TECLA_U, TECLA_V, TECLA_W, TECLA_X, TECLA_Y, TECLA_Z
  TECLA_0, TECLA_1, TECLA_2, TECLA_3, TECLA_4, TECLA_5, TECLA_6, TECLA_7, TECLA_8, TECLA_9
- TECLA_ESPAÇO, TECLA_ENTER, TECLA_PARA_CIMA, TECLA_PARA_BAIXO, TECLA_PARA_ESQUERDA, TECLA_PARA_DIREITA</code></dt>
+ TECLA_ESPAÇO, TECLA_ENTER, TECLA_PARA_CIMA, TECLA_PARA_BAIXO, TECLA_PARA_ESQUERDA, TECLA_PARA_DIREITA: Lógico</code></dt>
   <dd>Indica se uma tecla específica foi pressionada.</dd>
   </dl>
+
+## Mouse ##
+
+### Atributos do Tipo ###
+
+<dt><code>BOTÃO_ESQUERDO: Lógico</code></dt>
+  <dd>Indica se o botão esquerdo do mouse está pressionado.</dd>
+<dt><code>BOTÃO_DIREITO: Lógico</code></dt>
+  <dd>Indica se o botão direito do mouse está pressionado.</dd>
+<dt><code>x: Inteiro</code></dt>
+  <dd>A posição do mouse no eixo X.</dd>
+<dt><code>y: Inteiro</code></dt>
+  <dd> posição do mouse no exio Y.</dd>
