@@ -7,6 +7,7 @@ import scala.util.{ Failure, Success, Try }
 
 import br.edu.ifrn.potigol.Potigolutil.{ Inteiro, Lista, Real, Texto }
 import javax.imageio.ImageIO
+import java.io.File
 
 object Imagem {
   private[this] val vazia = new Imagem(new BufferedImage(200, 200, BufferedImage.TYPE_INT_RGB))
@@ -17,7 +18,7 @@ object Imagem {
   def apply(caminho: Texto): Imagem = {
     imagens.get(caminho).getOrElse {
       Try {
-        ImageIO.read(Imagem.getClass.getResource(caminho))
+        ImageIO.read(new File(caminho))
       } map (new Imagem(_)) match {
         case Success(img) =>
           imagens(caminho) = img
