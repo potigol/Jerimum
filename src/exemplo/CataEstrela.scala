@@ -57,7 +57,7 @@ object CataEstrela extends App {
 
     def desenhe() = {
       val imagem = imagens((Relogio.milisegundos / 100 + i) % imagens.tamanho)
-      imagem.desenhe_centralizado(x, y, 1, 0)
+      imagem.desenhe_centralizado(x, y, 1)
     }
   }
 
@@ -81,7 +81,7 @@ object CataEstrela extends App {
     estado match {
       case "INICIO"  => desenhe_inicio
       case "JOGANDO" => desenhe_jogando
-      case "FIM" | _ => desenhe_fim
+      case _         => desenhe_fim
     }
   }
 
@@ -125,7 +125,7 @@ object CataEstrela extends App {
 
   // Estado: fim do jogo
   def desenhe_fim() = {
-    val msg = s"FIM DE JOGO, VOCÊ FEZ ${nave.placar} PONTOS"
+    val msg = s"FIM DE JOGO, VOCE FEZ ${nave.placar} PONTOS"
     fonte.desenhe_centralizado(msg, jogo.largura / 2, jogo.altura / 2, 3, Cor.AMARELO)
   }
 
