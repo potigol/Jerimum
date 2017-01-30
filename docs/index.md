@@ -66,7 +66,7 @@ jogo.iniciar("Título", 640, 480, atualize, desenhe, 60)
 ## Mouse ##
 
 ### Atributos do Tipo ###
-
+<dl>
 <dt><code>BOTÃO_ESQUERDO: Lógico</code></dt>
   <dd>Indica se o botão esquerdo do mouse está pressionado.</dd>
 <dt><code>BOTÃO_DIREITO: Lógico</code></dt>
@@ -75,3 +75,4 @@ jogo.iniciar("Título", 640, 480, atualize, desenhe, 60)
   <dd>A posição do mouse no eixo X.</dd>
 <dt><code>y: Inteiro</code></dt>
   <dd> posição do mouse no exio Y.</dd>
+</dl>
