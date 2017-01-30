@@ -5,8 +5,14 @@ Para usar a biblioteca Jerimum comece o programa com a instrução `use "jerimum
 ## Jogo ##
 
 
+### Atributos ###
+<dl>
+  <dt>`largura: Inteiro`</dt>
+  <dd>Largura da janela do jogo (em pixels)</dd>
 
-#### largura ####
+  <dt>`altura: Inteiro`</dt>
+  <dd>Altura da janela do jogo (em pixels)</dd>
+</dl>
 
 `jogo.largura: Inteiro` - largura da tela em pixels
 
