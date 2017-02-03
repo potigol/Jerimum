@@ -98,7 +98,7 @@ jogo.iniciar("Título", 640, 480, atualize, desenhe, 60)
  TECLA_ESPAÇO, TECLA_ENTER, TECLA_PARA_CIMA, TECLA_PARA_BAIXO, TECLA_PARA_ESQUERDA, TECLA_PARA_DIREITA: Lógico</code></dt>
   <dd>Indica se uma tecla específica foi pressionada.<br>
   Exemplo: <code>se Teclado.TECLA_PARA_DIREITA então x := x + 1 fim</code></dd>
-  </dl>
+</dl>
 
 ## Mouse ##
 
