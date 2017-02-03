@@ -23,7 +23,7 @@ jogo.iniciar("Título", 640, 480, atualize, desenhe, 60)
 <dl>
 <dt><code>largura: Inteiro = 640</code></dt>
   <dd>Largura da janela do jogo (em pixels)<br>
-    Exemplo: <kbd>x = jogo.largura</kbd>
+    Exemplo: <code>x = jogo.largura</code>
   </dd>
 
 <dt><code>altura: Inteiro = 480</code></dt>
