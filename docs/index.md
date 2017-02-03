@@ -82,7 +82,6 @@ jogo.iniciar("Título", 640, 480, atualize, desenhe, 60)
 <dt><code>desenhe_centralizado(x, y: Real, z: Inteiro, angulo: Real = 0.0)</code></dt>
   <dd>Desenha uma imagem na tela tendo (x, y) como ponto central.<br>
   Exemplo: <code>img.desenhe_centralizado(20, 30, 1)</code></dd>
-</dl>
 <dt><code>fatie(caminho: Texto, x: Inteiro, y: Inteiro): Lista[Imagem]</code></dt>
   <dd>Recorta uma imagem em imagens menores formando uma lista.<br>
   Exemplo: <code>imagens = Imagem.fatie("sprite.png", 30, 30)</code></dd>
@@ -110,7 +109,7 @@ jogo.iniciar("Título", 640, 480, atualize, desenhe, 60)
   Exemplo: <code>se Mouse.BOTÃO_ESQUERDO então x := x - 1 fim</code></dd>
 <dt><code>BOTÃO_DIREITO: Lógico</code></dt>
   <dd>Indica se o botão direito do mouse está pressionado.<br>
-  Exemplo: <code>se Mouse.BOTÃO_ESQUERDO então x := x + 1 fim</code></dd>
+  Exemplo: <code>se Mouse.BOTÃO_DIREITO então x := x + 1 fim</code></dd>
 <dt><code>x: Inteiro</code></dt>
   <dd>A posição do mouse no eixo X.<br>
   Exemplo: <code>pos_x := Mouse.x</code></dd> 
