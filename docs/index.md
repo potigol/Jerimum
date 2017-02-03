@@ -27,13 +27,17 @@ jogo.iniciar("Título", 640, 480, atualize, desenhe, 60)
   </dd>
 
 <dt><code>altura: Inteiro = 480</code></dt>
-  <dd>Altura da janela do jogo (em pixels)</dd>
+  <dd>Altura da janela do jogo (em pixels)<br>
+    Exemplo: <kbd>y = jogo.largura</kbd></dd>
   
-<dt><code>titulo: Texto</code></dt>
-  <dd>Texto que aparece na barra de título da janela</dd>
+<dt><code>título: Texto</code></dt>
+  <dd>Texto que aparece na barra de título da janela<br>
+    Exemplo: <kbd>s = jogo.título</kbd>
+    </dd>
 
 <dt><code>fps: Inteiro = 60</code></dt>
-  <dd>Taxa de atualização do jogo em quadros por segundo</dd>
+  <dd>Taxa de atualização do jogo em quadros por segundo<br>
+    Exemplo: <kbd>a = jogo.fps</kbd></dd>
 </dl>
 
 ### Métodos ###
