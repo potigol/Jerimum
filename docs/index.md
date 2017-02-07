@@ -63,6 +63,8 @@ jogo.iniciar("Título", 640, 480, atualize, desenhe, 60)
 
 ## Imagem ##
 
+Permite carregar imagens de arquivos e exibir na tela.
+
 ### Atributos ###
 <dl>
 <dt><code>largura: Inteiro</code></dt>
@@ -89,6 +91,8 @@ jogo.iniciar("Título", 640, 480, atualize, desenhe, 60)
 
 ## Teclado ##
 
+Verifica se alguma tecla está pressionada.
+
 ### Atributos###
 
 <dl>
@@ -101,6 +105,8 @@ jogo.iniciar("Título", 640, 480, atualize, desenhe, 60)
 </dl>
 
 ## Mouse ##
+
+Verifica se algum botão do mouse está pressionado.
 
 ### Atributos do Tipo ###
 <dl>
@@ -116,6 +122,24 @@ jogo.iniciar("Título", 640, 480, atualize, desenhe, 60)
 <dt><code>y: Inteiro</code></dt>
   <dd> posição do mouse no eixo Y.<br>
   Exemplo: <code>pos_y := Mouse.y</code></dd>
+</dl>
+
+## Fonte ##
+
+Usado para escrever textos na tela
+
+### Atributos ###
+<dl>
+<dt><code>AMARELO, AZUL, BRANCO, CIANO, CINZA, CINZA_CLARO, CINZA_ESCURO, LARANJA, MAGENTA, PRETO, ROSA, VERDE, VERMELHO: Cor</code></dt>
+  <dd>Cores predefinidas.<br>
+  Exemplo: <code>fonte.desenhe("Texto", 10, 20, Cor.AMARELO)</code></dd>
+</dl>
+
+### Métodos ###
+<dl>
+<dt><code>Cor(vermelho, verde, azul: Inteiro</code></dt>
+  <dd>Construtor: Cria uma nova cor passando os componentes vermelho, verde e azul.<br>
+  Exemplo: <code>cor = Cor(10, 120, 240)</code></dd>
 </dl>
 
 ## Cor ##
