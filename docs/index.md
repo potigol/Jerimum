@@ -82,7 +82,7 @@ jogo.iniciar("Título", 640, 480, atualize, desenhe, 60)
 <dt><code>desenhe_centralizado(x, y: Real, z: Inteiro, angulo: Real = 0.0, scala_Y: Real = 1.0)</code></dt>
   <dd>Desenha uma imagem na tela tendo (x, y) como ponto central.<br>
   Exemplo: <code>img.desenhe_centralizado(20, 30, 1)</code></dd>
-<dt><code>fatie(caminho: Texto, x, y: Inteiro): Lista[Imagem]</code></dt>
+<dt><code>fatie(x, y: Inteiro): Lista[Imagem]</code></dt>
   <dd>Recorta uma imagem em imagens menores formando uma lista.<br>
   Exemplo: <code>imagens = Imagem("sprite.png").fatie(30, 30)</code></dd>
 </dl>
