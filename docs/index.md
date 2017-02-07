@@ -130,16 +130,22 @@ Usado para escrever textos na tela
 
 ### Atributos ###
 <dl>
-<dt><code>AMARELO, AZUL, BRANCO, CIANO, CINZA, CINZA_CLARO, CINZA_ESCURO, LARANJA, MAGENTA, PRETO, ROSA, VERDE, VERMELHO: Cor</code></dt>
-  <dd>Cores predefinidas.<br>
-  Exemplo: <code>fonte.desenhe("Texto", 10, 20, Cor.AMARELO)</code></dd>
+<dt><code>tamanho: Inteiro</code></dt>
+  <dd>Tamanho da letra<br>
+  Exemplo: <code>a = fonte.tamanho</code></dd>
 </dl>
 
 ### Métodos ###
 <dl>
-<dt><code>Cor(vermelho, verde, azul: Inteiro</code></dt>
-  <dd>Construtor: Cria uma nova cor passando os componentes vermelho, verde e azul.<br>
-  Exemplo: <code>cor = Cor(10, 120, 240)</code></dd>
+<dt><code>Fonte(tamanho: Inteiro)</code></dt>
+  <dd>Construtor: Cria uma nova fonte passando o tamanho.<br>
+  Exemplo: <code>f = Fonte(16)</code></dd>
+<dt><code>desenhe(texto: Texto, x, y: Real, z: Inteiro)</code></dt>
+  <dd>Escreve um texto na tela na posição (x, y), camada z.<br>
+  Exemplo: <code>fonte.desenhe("Texto", 100, 120, 3)</code></dd>
+<dt><code>desenhe_centralizado(texto: Texto, x, y: Real, z: Inteiro)</code></dt>
+  <dd>Escreve um texto na tela centralizado no ponto (x, y), camada z.<br>
+  Exemplo: <code>fonte.desenhe_centralizado("Texto", 100, 120, 3)</code></dd>
 </dl>
 
 ## Cor ##
@@ -153,7 +159,7 @@ Usado para escrever textos na tela
 
 ### Métodos ###
 <dl>
-<dt><code>Cor(vermelho, verde, azul: Inteiro</code></dt>
+<dt><code>Cor(vermelho, verde, azul: Inteiro)</code></dt>
   <dd>Construtor: Cria uma nova cor passando os componentes vermelho, verde e azul.<br>
   Exemplo: <code>cor = Cor(10, 120, 240)</code></dd>
 </dl>
