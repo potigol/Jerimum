@@ -17,7 +17,7 @@ object Jogo extends Runnable {
 
   private[this] var desenhe, atualize = () => {}
 
-  def init() = {
+  private[this] def init() = {
     display = new Tela(titulo, largura, altura) {
       frame.addKeyListener(Teclado)
       frame.addMouseListener(Mouse)
@@ -108,5 +108,12 @@ object Jogo extends Runnable {
   def projeção_Y(angulo: Real, valor: Real): Real = {
     -Math.cos(angulo * Math.PI / 180) * valor
   }
+
+  val projecao_X = projeção_X _
+  val projeçao_X = projeção_X _
+  val projecão_X = projeção_X _
+  val projecao_Y = projeção_Y _
+  val projeçao_Y = projeção_Y _
+  val projecão_Y = projeção_Y _
 
 }
