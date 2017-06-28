@@ -7,7 +7,7 @@ object Fonte {
 
 }
 
-case class Fonte(tamanho: Int) {
+case class Fonte(tamanho: Inteiro) {
   private[this] val font = new Font("Dialog", Font.BOLD, tamanho);
 
   def desenhe_centralizado(msg: Texto, x: Real, y: Real, z: Inteiro, c: Cor) = {

@@ -7,4 +7,6 @@ package object jerimum {
   val relogio = Relogio
   val Relógio = Relogio
   val cor = Cor
+  type Música = Musica
+  val Música = Musica
 }
