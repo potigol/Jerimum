@@ -1,0 +1,15 @@
+use "jerimum"
+
+fundo = Imagem("Space.png")
+nave_imagem = Imagem("nave.png")
+
+atualize()
+  # Código para atualizar o jogo
+fim
+
+desenhe()
+  fundo.desenhe(0, 0, 0)
+  nave_imagem.desenhe(300, 200, 2)
+fim
+
+jogo.iniciar("Cata Estrelas", 640, 480, atualize, desenhe)

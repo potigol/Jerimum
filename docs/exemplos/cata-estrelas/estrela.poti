@@ -1,0 +1,14 @@
+use "jerimum"
+
+tipo Estrela
+  cor = Cor.BRANCO
+  x = aleatório(jogo.largura)
+  y = aleatório(jogo.altura)
+  imagens = Imagem("Estrela.png").fatie(25, 25)
+
+  desenhe()
+    n = (Relógio.milisegundos div 100) mod imagens.tamanho + 1
+    img = imagens[n]
+    img.desenhe_centralizado(x, y, 1, 0)
+  fim
+fim

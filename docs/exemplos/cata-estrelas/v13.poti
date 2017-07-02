@@ -1,0 +1,36 @@
+use "jerimum"
+use "jogador.poti"
+use "estrela.poti"
+
+fundo = Imagem("Space.png")
+nave = Jogador(jogo.largura / 2, jogo.altura / 2)
+var estrelas = Lista(0, Estrela())
+fonte = Fonte(16)
+
+atualize()
+  estrelas := nave.cate_estrelas(estrelas)
+  se estrelas.tamanho < 25 e aleatório(100) < 4 então
+    estrelas := Estrela() :: estrelas
+  fim
+  se Teclado.TECLA_PARA_DIREITA então
+    nave.girar_direita
+  fim
+  se Teclado.TECLA_PARA_ESQUERDA então
+    nave.girar_esquerda
+  fim
+  se Teclado.TECLA_PARA_CIMA então
+    nave.acelerar
+  fim
+  nave.mover
+fim
+
+desenhe()
+  fundo.desenhe(0, 0, 0)
+  nave.desenhe
+  para estrela em estrelas faça
+    estrela.desenhe
+  fim
+  fonte.desenhe("Placar: {nave.placar}", 10, 20, 3, Cor.AMARELO)
+fim
+
+jogo.iniciar("Cata Estrelas", 640, 480, atualize, desenhe)

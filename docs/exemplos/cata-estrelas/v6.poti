@@ -1,0 +1,36 @@
+use "jerimum"
+
+fundo = Imagem("Space.png")
+nave_imagem = Imagem("nave.png")
+var nave_x = jogo.largura / 2
+var nave_y = jogo.altura / 2
+
+atualize()
+  se Teclado.TECLA_PARA_DIREITA então
+    nave_x := nave_x + 10
+    se nave_x > jogo.largura - 40 então
+      nave_x := jogo.largura - 40
+    fim
+  fim
+  se Teclado.TECLA_PARA_ESQUERDA então
+    nave_x := nave_x - 10
+    se nave_x < 10 então nave_x := 10 fim
+  fim
+  se Teclado.TECLA_PARA_BAIXO então
+    nave_y := nave_y + 10
+    se nave_y > jogo.altura - 40 então
+      nave_y := jogo.altura - 40
+    fim
+  fim
+  se Teclado.TECLA_PARA_CIMA então
+    nave_y := nave_y - 10
+    se nave_y < 10 então nave_y := 10 fim
+  fim
+fim
+
+desenhe()
+  fundo.desenhe(0, 0, 0)
+  nave_imagem.desenhe(nave_x, nave_y, 2)
+fim
+
+jogo.iniciar("Cata Estrelas", 640, 480, atualize, desenhe)

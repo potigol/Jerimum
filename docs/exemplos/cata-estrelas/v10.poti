@@ -1,0 +1,82 @@
+use "jerimum"
+
+tipo Jogador
+  var x, y: Real
+  imagem = Imagem("nave.png")
+  var ângulo, vel_x, vel_y := 0.0
+
+  cate_estrelas(estrelas: Lista[Estrela])
+    estrelas.selecione(
+      estrela => Jogo.distância(x, y, estrela.x, estrela.y) > 35
+    )
+  fim
+
+  desenhe()
+    imagem.desenhe_centralizado(x, y, 2, ângulo)
+  fim
+
+  girar_direita()
+    ângulo := ângulo + 5
+  fim
+
+  girar_esquerda()
+    ângulo := ângulo - 5
+  fim
+
+  acelerar()
+    vel_x := vel_x + Jogo.projeção_X(ângulo, 0.5)
+    vel_y := vel_y + Jogo.projeção_Y(ângulo, 0.5)
+  fim
+
+  mover()
+    x := x + vel_x
+    y := y + vel_y
+    x := (x + 640) mod 640
+    y := (y + 480) mod 480
+    vel_x := vel_x * 0.95
+    vel_y := vel_y * 0.95
+  fim
+fim
+
+tipo Estrela
+  cor = Cor.BRANCO
+  x = aleatório(jogo.largura)
+  y = aleatório(jogo.altura)
+  imagens = Imagem.fatie("Estrela.png", 25, 25)
+
+  desenhe()
+    img = imagens[1]
+    img.desenhe_centralizado(x, y, 1, 0)
+  fim
+fim
+
+fundo = Imagem("Space.png")
+nave = Jogador(jogo.largura / 2, jogo.altura / 2)
+var estrelas = Lista(0, Estrela())
+
+atualize()
+  estrelas := nave.cate_estrelas(estrelas)
+  se estrelas.tamanho < 25 e aleatório(100) < 4 então
+    estrelas := Estrela() :: estrelas
+  fim
+  se Teclado.TECLA_PARA_DIREITA então
+    nave.girar_direita
+  fim
+  se Teclado.TECLA_PARA_ESQUERDA então
+    nave.girar_esquerda
+  fim
+  se Teclado.TECLA_PARA_CIMA então
+    nave.acelerar
+  fim
+  nave.mover
+fim
+
+desenhe()
+  fundo.desenhe(0, 0, 0)
+  nave.desenhe
+  para estrela em estrelas faça
+    estrela.desenhe
+  fim
+fim
+
+jogo.iniciar("Cata Estrelas", 640, 480, atualize, desenhe)

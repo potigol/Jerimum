@@ -1,0 +1,11 @@
+use "jerimum"
+
+atualize()
+  # Código para atualizar o jogo
+fim
+
+desenhe()
+  # código para desenhar o jog
+fim
+
+jogo.iniciar("Título", 640, 480, atualize, desenhe)

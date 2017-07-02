@@ -1,0 +1,112 @@
+use "jerimum"
+use "jogador.poti"
+use "estrela.poti"
+
+fundo = Imagem("Space.png")
+nave1, nave2 = Jogador(jogo.largura / 2, jogo.altura / 2)
+var estrelas := Lista(0, Estrela())
+fonte = Fonte(16)
+var tempo := 0.0
+INICIO, JOGANDO, FIM = 1, 2, 3
+var estado := INICIO
+
+atualize()
+  escolha estado
+    caso INICIO  => atualize_inicio
+    caso JOGANDO => atualize_jogando
+    caso FIM     => atualize_fim
+  fim
+fim
+
+desenhe()
+  fundo.desenhe(0, 0, 0)
+  escolha estado
+    caso INICIO  => desenhe_inicio
+    caso JOGANDO => desenhe_jogando
+    caso FIM     => desenhe_fim
+  fim
+fim
+
+# Estado Inicio
+atualize_inicio()
+  se Teclado.TECLA_I então
+    estado := JOGANDO
+  fim
+fim
+
+desenhe_inicio()
+  msg = "PRESSIONE [I] PARA COMECAR"
+  a = jogo.largura / 2
+  b = jogo.altura / 2
+  fonte.desenhe_centralizado(msg, a, b, 3, Cor.AMARELO)
+fim
+
+# Estado Jogando
+atualize_jogando()
+  estrelas := nave1.cate_estrelas(estrelas)
+  estrelas := nave2.cate_estrelas(estrelas)
+  se estrelas.tamanho < 25 e aleatório(100) < 4 então
+    estrelas := Estrela() :: estrelas
+  fim
+  # jogador 1
+  se Teclado.TECLA_PARA_DIREITA então
+    nave1.girar_direita
+  fim
+  se Teclado.TECLA_PARA_ESQUERDA então
+    nave1.girar_esquerda
+  fim
+  se Teclado.TECLA_PARA_CIMA então
+    nave1.acelerar
+  fim
+
+  #jogador 2
+  se Teclado.TECLA_W então
+    nave2.acelerar
+  fim
+  se Teclado.TECLA_A então
+    nave2.girar_esquerda
+  fim
+  se Teclado.TECLA_D então
+    nave2.girar_direita
+  fim
+
+  nave1.mover
+  nave2.mover
+  tempo := tempo + 1.0 / 60.0
+  se tempo >= 30.0 então
+    estado := FIM
+  fim
+fim
+
+desenhe_jogando()
+  nave1.desenhe
+  nave2.desenhe
+  para estrela em estrelas faça
+    estrela.desenhe
+  fim
+  fonte.desenhe("Placar 1: {nave1.placar}", 10, 20, 3, Cor.AMARELO)
+  fonte.desenhe("Tempo: {tempo.inteiro}s", 10, 40, 3, Cor.AMARELO)
+  fonte.desenhe("Placar 2: {nave2.placar}", 10, 60, 3, Cor.AMARELO)
+fim
+
+#estado fim
+atualize_fim()
+  se Teclado.TECLA_R então
+    estrelas := Lista(0, Estrela())
+    tempo := 0.0
+    estado := JOGANDO
+  fim
+fim
+
+desenhe_fim()
+  msg = "FIM DE JOGO, JOGADOR FEZ {nave1.placar} PONTOS"
+  msg1 = "FIM DE JOGO, JOGADOR FEZ {nave2.placar} PONTOS"
+  msg2 = "PRESSIONE [R] PARA RECOMECAR"
+  a = jogo.largura / 2
+  b = jogo.altura / 2
+  fonte.desenhe_centralizado(msg, a, b, 3, Cor.AMARELO)
+  fonte.desenhe_centralizado(msg1, a, b + 20, 3, Cor.AMARELO)
+  fonte.desenhe_centralizado(msg2, a, b + 40, 3, Cor.AMARELO)
+fim
+
+jogo.iniciar("Cata Estrelas", 640, 480, atualize, desenhe)
