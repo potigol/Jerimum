@@ -5,7 +5,7 @@ atualize()
 fim
 
 desenhe()
-  # código para desenhar o jog
+  # código para desenhar o jogo
 fim
 
 jogo.iniciar("Título", 640, 480, atualize, desenhe)
