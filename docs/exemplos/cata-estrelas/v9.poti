@@ -41,7 +41,6 @@ tipo Jogador
 fim
 
 tipo Estrela
-  cor = Cor.BRANCO
   x = aleatório(jogo.largura)
   y = aleatório(jogo.altura)
   imagens = Imagem.fatie("Estrela.png", 25, 25)

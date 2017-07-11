@@ -78,6 +78,7 @@ atualize_fim()
     estrelas := Lista(0, Estrela())
     tempo := 0.0
     estado := JOGANDO
+    jogador.placar := 0
   fim
 fim
 
@@ -87,7 +88,7 @@ desenhe_fim()
   a = jogo.largura / 2
   b = jogo.altura / 2
   fonte.desenhe_centralizado(msg, a, b, 3, Cor.AMARELO)
-  fonte.desenhe_centralizado(msg2, a, b + 20, 3, Cor.AMARELO)  
+  fonte.desenhe_centralizado(msg2, a, b + 20, 3, Cor.AMARELO)
 fim
 
 jogo.iniciar("Cata Estrelas", 640, 480, atualize, desenhe)
