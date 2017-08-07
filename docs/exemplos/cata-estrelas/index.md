@@ -25,7 +25,7 @@ jogo.iniciar("Título", 640, 480, atualize, desenhe)
 ````
 Para executar digite `potigol v1.poti` na linha de comando.
 
-<img src="v1.PNG" width="50%" />
+<img src="v1.PNG" width="75%" />
 
 [código fonte](https://github.com/potigol/Jerimum/blob/master/docs/exemplos/cata-estrelas/v1.poti)
 
@@ -33,7 +33,16 @@ Para executar digite `potigol v1.poti` na linha de comando.
 
 ## Imagem
 
-Para carregar uma imagem usamos o tipo `Imagem(arquivo: Texto)`, passando o nome do arquivo. O tipo Imagem possui uma operação chamada `desenhe(x, y: Real, z: Inteiro)` para desenhar a imagem em uma posição x, y na camada z.
+Para carregar uma imagem usamos o tipo <code>Imagem(arquivo: Texto)</code>, passando o nome do arquivo. O tipo Imagem possui uma operação chamada `desenhe(x, y: Real, z: Inteiro)` para desenhar a imagem em uma posição x, y na camada z.
+
+### Camadas
+
+As camadas servem para definir a ordem de exibição das imagens. A Camada 0 é a que está mais ao fundo. As camadas maiores são
+desenhadas em cima das menores.
+
+Primeiro é desenhada a imagem de fundo, depois a imagem da nave.
+
+<img src="camadas.png" width="50%" />
 
 ````ruby
 use "jerimum"
@@ -51,6 +60,9 @@ fim
 
 jogo.iniciar("Título", 640, 480, atualize, desenhe)
 ````
+
+<img src="v3.PNG" width="75%" />
+
 [código fonte](https://github.com/potigol/Jerimum/blob/master/docs/exemplos/cata-estrelas/v3.poti)
 
 ## Movimento
