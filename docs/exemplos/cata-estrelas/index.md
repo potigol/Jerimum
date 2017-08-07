@@ -10,7 +10,7 @@ A estrutura básica de um jogo:
  - O jogo precisa ter pelo menos duas funções. Uma chamada de `atualize()`, responsável pelo controle do jogo, e outra chamada `desenhe()` que é chamada para exibir os elementos gráficos na tela.
  - Para iniciar o jogo chamamos a função `iniciar` do objeto jogo informando o título, o tamanho da janela e as duas funções.
 
-````python
+````scala
 use "jerimum"
 
 atualize()
@@ -23,7 +23,13 @@ fim
 
 jogo.iniciar("Título", 640, 480, atualize, desenhe)
 ````
+Para executar digite `potigol v1.poti` na linha de comando.
+
+<img src="v1.PNG" width="50%" />
+
 [código fonte](https://github.com/potigol/Jerimum/blob/master/docs/exemplos/cata-estrelas/v1.poti)
+
+
 
 ## Imagem
 
