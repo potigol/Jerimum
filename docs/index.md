@@ -1,5 +1,8 @@
 # Biblioteca Jerimum #
 
+Exemplos: [Cata Estrelas](https://potigol.github.io/Jerimum/exemplos/cata-estrelas/), [Labirinto](https://ifrn.github.io/jerimum/)
+
+
 Para usar a biblioteca Jerimum comece o programa com a instrução `use "jerimum"`
 
 ````python
