@@ -1,6 +1,14 @@
 # Cata Estrelas
 
+
+
 ## Estrutura básica
+
+A estrutura básica de um jogo:
+
+ - Um jogo que usa a biblioteca de jogos 2D Jerimum deve começar com a instrução `use "jerimum"`
+ - O jogo precisa ter pelo menos duas funções. Uma chamada de `atualize()`, responsável pelo controle do jogo, e outra chamada `desenhe()` que é chamada para exibir os elementos gráficos na tela.
+ - Para iniciar o jogo chamamos a função `iniciar` do objeto jogo informando o título, o tamanho da janela e as duas funções.
 
 ````python
 use "jerimum"
@@ -15,20 +23,29 @@ fim
 
 jogo.iniciar("Título", 640, 480, atualize, desenhe)
 ````
-[código fonte](v1.poti)
+[código fonte](https://github.com/potigol/Jerimum/blob/master/docs/exemplos/cata-estrelas/v1.poti)
 
 ## Imagem
 
-````python
+Para carregar uma imagem usamos o tipo `Imagem(arquivo: Texto)`, passando o nome do arquivo. O tipo Imagem possui uma operação chamada `desenhe(x, y: Real, z: Inteiro)` para desenhar a imagem em uma posição x, y na camada z.
+
+````ruby
+use "jerimum"
+
 fundo = Imagem("Space.png")
 nave_imagem = Imagem("nave.png")
+
+atualize()
+fim
 
 desenhe()
   fundo.desenhe(0, 0, 0)
   nave_imagem.desenhe(300, 200, 2)
 fim
+
+jogo.iniciar("Título", 640, 480, atualize, desenhe)
 ````
-[código fonte](v3.poti)
+[código fonte](https://github.com/potigol/Jerimum/blob/master/docs/exemplos/cata-estrelas/v3.poti)
 
 ## Movimento
 
