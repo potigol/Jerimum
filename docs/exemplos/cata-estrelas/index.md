@@ -164,7 +164,7 @@ fim
 
 tipo Jogador
   cate_estrelas(estrelas: Lista[Estrela])
-    estrelas.selecione(estrela => Jogo.distância(x, y, estrela.x, estrela.y) > 35)
+    retorne estrelas.selecione(estrela => Jogo.distância(x, y, estrela.x, estrela.y) > 35)
   fim
 fim
 
@@ -258,7 +258,7 @@ tipo Jogador
       estrela => Jogo.distância(x, y, estrela.x, estrela.y) > 35
     )
     placar := placar + (n - estrelas_catadas.tamanho) * 10
-    estrelas_catadas
+    retorne estrelas_catadas
   fim
 fim
 
