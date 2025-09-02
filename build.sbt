@@ -1,18 +1,22 @@
 name := "jerimum"
 
-version := "0.9.16"
+version := "1.0.0"
 
-scalaVersion := "2.12.8"
+scalaVersion := "2.12.12"
 
-javacOptions in Compile ++= Seq("-source", "1.8", "-target", "1.8", "-Xlint")
-scalacOptions in Compile ++= Seq("-deprecation")
+// opções de compilação
+Compile / javacOptions ++= Seq("-source", "11", "-target", "11", "-Xlint")
+Compile / scalacOptions ++= Seq("-deprecation")
 
-assemblyOutputPath in assembly := file("./jerimum.jar")
+// sbt-assembly
+assembly / assemblyOutputPath := file("./jerimum.jar")
 
+// dependências
 libraryDependencies ++= Seq(
-  "potigol" % "potigol_2.12" % "0.9.16" % "provided"
+  "potigol" % "potigol_2.12" % "1.0-RC1" // % "provided"
 )
 
-EclipseKeys.withSource in ThisBuild := true
-EclipseKeys.withJavadoc in ThisBuild := true
-EclipseKeys.createSrc in ThisBuild := EclipseCreateSrc.Default + EclipseCreateSrc.ManagedClasses
+// sbteclipse
+//ThisBuild / EclipseKeys.withSource  := true
+//ThisBuild / EclipseKeys.withJavadoc := true
+//ThisBuild / EclipseKeys.createSrc   := EclipseCreateSrc.Default + EclipseCreateSrc.ManagedClasses

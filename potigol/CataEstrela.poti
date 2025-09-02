@@ -1,5 +1,9 @@
 use "jerimum"
 
+beep = Som("beep.wav")
+som_fundo = Musica("space.wav")
+som_fundo.toque()
+
 # Tipos
 tipo Jogador
   var x, y: Real
@@ -40,6 +44,9 @@ tipo Jogador
     )
     n = estrelas.tamanho - catado.tamanho
     placar := placar + n * 10
+    se n > 0 então
+      beep.toque
+    fim
     catado
   fim
 fim
@@ -128,6 +135,7 @@ desenhe_fim()
 fim
 
 atualize_fim()
+  som_fundo.pare
 fim
 
 # Jogo

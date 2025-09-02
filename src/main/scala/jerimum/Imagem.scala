@@ -23,7 +23,9 @@ object Imagem {
         case Success(img) =>
           imagens(caminho) = img
           img
-        case Failure(x) => println(x); vazia
+        case Failure(msg) =>
+          println(msg)
+          this.vazia
       }
     }
   }

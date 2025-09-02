@@ -3,7 +3,8 @@ package jerimum
 import java.awt.{ Canvas, Dimension }
 
 import br.edu.ifrn.potigol.Potigolutil.{ Inteiro, Texto }
-import javax.swing.JFrame
+import javax.swing.{JFrame, WindowConstants}
+import javax.imageio.IIOException
 
 class Tela(titulo: Texto, largura: Inteiro, altura: Inteiro) {
   private[this] val dim = new Dimension(largura, altura)
@@ -16,7 +17,7 @@ class Tela(titulo: Texto, largura: Inteiro, altura: Inteiro) {
   val frame = new JFrame(titulo) {
     setIconImage(Imagem("potigol.png").buffer)
     setSize(dim)
-    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)
+    setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE)
     setResizable(false)
     setLocationRelativeTo(null)
     setVisible(true)
